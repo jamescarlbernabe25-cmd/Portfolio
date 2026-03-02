@@ -1,0 +1,652 @@
+section{
+    position: fixed;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: rgb(248, 249, 250) !important; /* White navbar */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.outer{
+    display: flex;
+    margin: 0 16px;
+    padding: 8px 0;
+}
+img{
+    height: 50px;
+    width: 50px;
+}
+li{
+    display: flex;
+    height: auto;
+    width: auto;
+}
+/* Light Mode */
+li a {
+    color: rgba(0, 0, 0, 0.615);
+    text-decoration: none;
+    padding: 10px;
+}
+li:hover a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+/* li:hover{
+    border-bottom: 2px solid rgb(0, 0, 0);
+} */
+
+li a.active{
+    color: rgba(0, 0, 0, 0.615);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.615);
+}
+
+li a.active:hover{
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-bottom: 2.5px solid rgb(0, 0, 0);
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    column-gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px 0 20px;
+    position: relative;
+    width: 100vw;
+    margin: 0;
+    height: auto;
+}
+
+.settings{
+    margin-left: auto;
+    position: relative;
+}
+
+/* --- DESKTOP (Default) --- */
+.menu-btn {
+  display: none; /* Hidden on large screens */
+}
+.mobile-only {
+    display: none; /* Hidden on desktop */
+}
+.mobile-only.toggle-item{
+    display: none; /* Hidden on desktop */
+}
+/* Layout for the list item */
+.toggle-item {
+    display: flex;
+    justify-content: space-between; /* Pushes toggle to the right */
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Groups Moon Icon + Text */
+.label-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: inherit;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* THE CIRCLE */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    
+    /* START POSITION: 3px from left */
+    left: 3px; 
+    
+    /* Smoothly animate the 'left' property */
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* THE SLIDE LOGIC */
+input:checked + .slider:before {
+    /* MOVE TO THE RIGHT */
+    /* 100% pushes it to the very edge, 
+       then -16px (its width) pulls it back inside,
+       then -3px creates your perfect allowance. */
+    left: calc(100% - 16px - 3px); 
+}
+
+/* Dark mode colors */
+input:checked + .slider {
+    background-color: #333; 
+}
+
+body.dark-mode .toggle-item {
+    border-color: #444;
+}
+.settings-container {
+    position: relative; /* Essential for dropdown positioning */
+    display: flex;
+    align-items: center;
+}
+
+.settings-trigger {
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.615);
+    font-size: 16px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.settings-trigger.active {
+    /* Flipping it 360 degrees makes the icon swap look like a "reveal" */
+    transform: rotateY(360deg); 
+    color: rgba(0, 0, 0, 0.615);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.615);
+}
+.settings-trigger.active:hover {
+    /* Flipping it 360 degrees makes the icon swap look like a "reveal" */
+    transform: rotateY(360deg); 
+    color: black;
+    border-bottom: 2.5px solid black;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;    /* Appears right below the gear */
+    right: -25px;     /* Aligns to the right edge */
+    background-color: rgb(248, 249, 250);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 8px; */
+    padding: 15px 20px 13px 20px;
+    list-style: none;
+    min-width: 160px;
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
+    z-index: 100;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: start;
+    height: auto;
+}
+
+/* Style the buttons inside dropdown */
+.dropdown-menu button {
+    width: 100%;
+    padding: 15px 10px;
+    background: none;
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.615);
+}
+button:hover {
+    color: rgb(0, 0, 0);
+}
+.settings-trigger:hover{
+    border-bottom: 2px solid black;
+}
+/* .dropdown-menu button:hover{
+    color: rgb(0, 0, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
+} */
+.dropdown-menu li{
+    width: 250px;
+    margin-bottom: 5px;
+}
+.dropdown-menu li:hover{
+    border-bottom: 2px solid rgb(0, 0, 0);
+}
+.dropdown-menu li:hover button {
+    color: rgb(0, 0, 0);
+}
+/* Dark Mode Dropdown override */
+body.dark-mode .dropdown-menu {
+    background: #222;
+    border-color: #444;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+body.dark-mode .dropdown-menu button {
+    color: #e5e4e4;
+}
+/* DARK MODE (Triggered by .dark-mode on body) */
+body.dark-mode section {
+    /* background-color: #000000; 
+    border-bottom: 1px solid #333; */
+    background-color: #222 !important;
+    /* border-color: #444; */
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode li a {
+    color: #e5e4e4 ;
+}
+
+/* body.dark-mode li:hover a {
+    border-bottom: 2px solid #ffffff;
+} */
+
+.sidebar.active .menu-btn {
+    display: flex; 
+    cursor: pointer;
+    margin-left: auto;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: none;
+  }
+
+.sidebar.active ul.show {
+    display: flex; /* SHOW the list when clicked */
+    height: 100vh;
+    padding: 0 12px;
+    margin-top: 0;      
+    margin-left: auto;
+    padding-bottom: 8px;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;    /* If the menu items are long, only the menu scrolls */
+    overflow-x: hidden;
+    top: 50px;
+  }
+
+.sidebar.active .dropdown-menu{
+    display: none;
+}
+
+body.dark-mode li a:hover{
+    border-bottom: 2px solid white;
+    color: white;
+}
+body.dark-mode li a.active{
+    border-bottom: 2px solid #e5e4e4;
+    color: #e5e4e4;
+}
+body.dark-mode li a.active:hover{
+    border-bottom: 2.5px solid white;
+    color: white;
+}
+body.dark-mode .dropdown-menu li:hover{
+    border-bottom: 2px solid white;
+    /* color: white !important; */
+}
+body.dark-mode .dropdown-menu li:hover button{
+    color: white !important;
+}
+body.dark-mode .settings-trigger{
+    color: #e5e4e4 !important;
+}
+body.dark-mode .settings-trigger:hover{
+    border-bottom: 2px solid white;
+    color: white !important;
+}
+body.dark-mode .settings-trigger.active{
+    border-bottom: 2px solid #e5e4e4;
+    color: #e5e4e4 !important;
+}
+body.dark-mode .settings-trigger.active:hover{
+    border-bottom: 2.5px solid white;
+    color: white !important;
+}
+@media (hover:hover){
+    /* 1. Show when the button is hovered */
+.settings-trigger:hover + .dropdown-menu,
+
+/* 2. Show when the menu itself is hovered (prevents it closing while moving mouse) */
+.dropdown-menu:hover,
+
+/* 3. Show when Angular adds the .show class (from a click) */
+.dropdown-menu.show {
+    display: flex !important;
+}
+}
+
+@media screen and (max-width: 550px) {
+.menu-btn {
+    display: inline-flex; /* Use inline-flex to prevent horizontal stretching */
+    align-self: center;   /* THE FIX: Stops the button from stretching to the navbar height */
+    
+    cursor: pointer;
+    margin-left: auto;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    
+    /* Keep your padding for the hit-area */
+    padding: 10px; 
+    margin-right: 5px;
+    
+    /* Force the "blue box" to be exactly the icon + padding */
+    height: fit-content; 
+    line-height: 0;       /* Removes invisible text spacing below icons */
+    
+    color: rgba(0, 0, 0, 0.615);
+    font-size: 18px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-btn.active {
+    /* Flipping it 360 degrees makes the icon swap look like a "reveal" */
+    transform: rotateY(360deg); 
+    color: rgba(0, 0, 0, 0.615) !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.615) !important;
+}
+@media (hover:hover) {
+    body.dark-mode .menu-btn{
+    color: #e5e4e4 !important;
+}
+    .menu-btn.active:hover {
+    /* Flipping it 360 degrees makes the icon swap look like a "reveal" */
+    transform: rotateY(360deg); 
+    color: black !important;
+    border-bottom: 2.5px solid black !important;
+}
+.menu-btn:hover{
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+body.dark-mode .menu-btn:hover{
+    border-bottom: 2px solid white;
+    color: white !important;
+}
+body.dark-mode .menu-btn.active{
+    border-bottom: 2px solid #e5e4e4 !important;
+    color: #e5e4e4 !important;
+}
+body.dark-mode .menu-btn.active:hover{
+    border-bottom: 2.5px solid white !important;
+    color: white !important;
+}
+
+}
+@media (hover:none) {
+    .menu-btn.active {
+    /* Flipping it 360 degrees makes the icon swap look like a "reveal" */
+    transform: rotateY(360deg); 
+    color: rgba(0, 0, 0, 0.615) !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.615) !important;
+}
+
+body.dark-mode .menu-btn.active{
+    border-bottom: 2px solid #e5e4e4 !important;
+    color: #e5e4e4 !important;
+}
+body.dark-mode .menu-btn{
+    color: #e5e4e4 !important;
+}
+}
+
+.mobile-only {
+        display: block; /* Show the text-based toggle in the list */
+    }
+    .mobile-only.toggle-item{
+    display: flex; 
+}
+  ul {
+    display: none; /* HIDE the list initially */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Drops it right below the navbar */
+    left: 0;
+    width: 100%;
+    /* box-shadow: 0 5px 10px rgba(0,0,0,0.1); */
+    box-sizing: border-box;
+  }
+
+  /* This is the class Angular toggles */
+  ul.show {
+    display: flex; /* SHOW the list when clicked */
+    height: auto;
+    padding: 0 20px 15px 20px;
+    margin-top: 15px;      
+    margin-left: auto;
+    background-color: rgb(248, 249, 250) !important; /* White navbar */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-y: auto;    /* If the menu items are long, only the menu scrolls */
+    overflow-x: hidden;
+    top: 50px;
+  }
+
+  li {
+    margin: 0px 16px;
+    width: 100%;
+  }
+
+  li a{
+    width: 100%;
+    padding: 15px 10px 15px 0;
+    font-size: 16px;
+    display: block;
+  }
+
+  li:hover a{
+    color: black;
+    text-decoration: none;
+    border-bottom: 2.5px solid black;
+}
+
+li a:hover{
+    color: black !important;
+    border-bottom: 2px solid black;
+}
+
+/* li.active{
+    color: rgba(0, 0, 0, 0.616);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.616);
+} */
+
+li a.active:hover{
+    color: black;
+    cursor: pointer;
+    border-bottom: 2.5px solid black;
+}
+li.active:hover a{
+    color: black !important;
+}
+body.dark-mode li a:hover{
+    color: white !important;
+    border-bottom: 2px solid white !important;
+}
+body.dark-mode li a.active:hover{
+    color: white !important;
+    border-bottom: 2.5px solid white !important;
+}
+
+body.dark-mode li a.active{
+    color: #e5e4e4 !important;
+    border-bottom: 2px solid #e5e4e4 !important;
+}
+
+.outer{
+    padding-bottom: 8px;
+    margin: 0 16px;
+}
+
+.settings{
+    display: none;
+}
+@media (hover: hover) {
+  /* When hovering the button, show the sibling UL */
+  .menu-btn:hover + ul,
+  /* When hovering the list itself, keep it open */
+  ul:hover,
+  /* Keep open if the 'show' class is active from a click */
+  ul.show {
+    display: flex !important;
+    /* Ensure it uses your existing mobile menu styles */
+    height: auto;
+    padding: 15px 20px 15px 20px;    
+    background-color: rgb(248, 249, 250) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    top: 50px;
+    position: absolute;
+    width: 100%;
+  }
+
+  body.dark-mode .menu-btn:hover + ul,
+  /* When hovering the list itself, keep it open */
+  body.dark-mode ul:hover,
+  /* Keep open if the 'show' class is active from a click */
+  body.dark-mode ul.show{
+    background-color: rgb(34, 34, 34) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Layout for the list item */
+.toggle-item {
+    display: flex;
+    justify-content: start; /* Pushes toggle to the right */
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 16px;
+}
+.toggle-item button{
+    width: 100%;
+}
+body.dark-mode .toggle-item button{
+    color: #e5e4e4 !important;
+}
+@media (hover:none){
+    .toggle-item .label-group{
+        color: rgba(0, 0, 0, 0.615) !important;
+    }
+    body.dark-mode .toggle-item{
+        color: rgba(0, 0, 0, 0.615) !important;
+    }
+}
+@media (hover:hover){
+.toggle-item:hover{
+    border-bottom: 2px solid black;
+}
+.toggle-item:hover button{
+    color: black;
+}
+body.dark-mode .toggle-item:hover{
+    border-bottom: 2px solid white !important;
+}
+body.dark-mode .toggle-item:hover button{
+    color: white !important;
+}
+}
+
+/* Groups Moon Icon + Text */
+.label-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.616);
+    cursor: pointer;
+    background-color: transparent;
+    font-family: none;
+    border: none;
+    padding: 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc !important;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* THE CIRCLE */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    
+    /* START POSITION: 3px from left */
+    left: 3px; 
+    
+    /* Smoothly animate the 'left' property */
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* THE SLIDE LOGIC */
+input:checked + .slider:before {
+    /* MOVE TO THE RIGHT */
+    /* 100% pushes it to the very edge, 
+       then -16px (its width) pulls it back inside,
+       then -3px creates your perfect allowance. */
+    left: calc(100% - 16px - 3px); 
+}
+
+/* Dark mode colors */
+input:checked + .slider {
+    background-color: #333 !important; 
+}
+
+body.dark-mode .toggle-item {
+    border-color: #444;
+}
+
+body.dark-mode ul.show{
+    background: #222 !important;
+    border-color: #444;
+    color: #e5e4e4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+}
+
+
+
+

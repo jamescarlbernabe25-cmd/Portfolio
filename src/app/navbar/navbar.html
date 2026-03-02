@@ -1,0 +1,76 @@
+<section>
+    <div class="outer">
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <img [src]="isDarkMode ? 'assets/Logo/JC white (2).png' : 'assets/Logo/jc black.png'" alt="">
+    </a>
+     <!-- Hamburger Icon -->
+        <a (click)="isMenuOpen = !isMenuOpen" 
+   class="menu-btn" 
+   style="cursor: pointer;" 
+   [class.active]="isMenuOpen">
+    <fa-icon [icon]="isMenuOpen ? faChevronDown : faBars"></fa-icon>
+</a>
+
+    <ul [class.show]="isMenuOpen">
+        <li>
+            <a routerLink="/home" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <fa-icon [icon]="faHome"></fa-icon>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/about" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About Me</a>
+        </li>
+        <li>
+            <a routerLink="/projs" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Projects</a>
+        </li>
+        <li>
+            <a routerLink="/contacts" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contacts & Links</a>
+        </li>
+        <li class="mobile-only toggle-item">
+    <button class="label-group" (click)="toggleDarkMode()">
+        <fa-icon [icon]="faMoon"></fa-icon> 
+        <span>Dark Mode</span>
+    </button>
+    
+    <!-- Minimalist Toggle Switch -->
+    <label class="switch">
+        <input type="checkbox" (change)="toggleDarkMode()" [checked]="isDarkMode">
+        <span class="slider round"></span>
+    </label>
+</li>
+        <li class="settings">
+            <div class="settings-container">
+    <button (click)="toggleDropdown()" class="settings-trigger" [class.active]="isDropdownOpen">
+        <fa-icon [icon]="isDropdownOpen ? faChevronDown : faGear"></fa-icon>
+    </button>
+
+    <!-- Dropdown Menu -->
+    <ul class="dropdown-menu" [class.show]="isDropdownOpen">
+        <!-- <li>
+            <button (click)="toggleDarkMode()">
+                <fa-icon [icon]="faMoon"></fa-icon> Dark Mode
+            </button>
+        </li> -->
+        <li class="desktop-only toggle-item">
+    <button class="label-group" (click)="toggleDarkMode()">
+        <fa-icon [icon]="faMoon"></fa-icon> 
+        <span>Dark Mode</span>
+    </button>
+    
+    <!-- Minimalist Toggle Switch -->
+    <label class="switch">
+        <input type="checkbox" (change)="toggleDarkMode()" [checked]="isDarkMode">
+        <span class="slider round"></span>
+    </label>
+</li>
+        <li>
+            <button (click)="toggleSidebar(); isMenuOpen = false" [class.active]="isSidebarActive" class="sidebar">
+                <fa-icon [icon]="faColumns"></fa-icon> Sidebar Mode
+            </button>
+        </li>
+    </ul>
+    </div>
+</li>
+    </ul>
+    </div>
+</section>
