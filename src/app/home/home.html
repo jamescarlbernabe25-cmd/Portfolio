@@ -1,1 +1,32 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+<section class="about">
+    <div class="outerdiv">
+        <div class="circle"></div>
+        <div class="rectangle"></div>
+        <div class="summary">
+            <h1>Hi, I'm James Carl Bernabe.</h1>
+        <p>
+            "I have been working as a developer for more than two years. <br> 
+            I have experience in various technologies, with a specialty in 
+            design—specifically in Angular."
+        </p>
+         <!-- Learn More Button -->
+            <a routerLink="/about" class="learn-more-btn">
+                Learn more about Me 
+                <fa-icon [icon]="faArrowExternal" class="ms-2"></fa-icon>
+            </a>
+        </div>
+        <div class="imgcontain">
+            <img src="assets/img/profImg.png" alt="">
+        </div>
+    </div>
+         <!-- Scroll Down Icon -->
+    <div class="scroll-down" (click)="scrollToProjects(projs)">
+        <fa-icon [icon]="faChevronDown"></fa-icon>
+    </div>
+    </section>
+    <section #projs class="projs">
+        <h1>Projects</h1>
+
+    </section>
+    <app-footer></app-footer>

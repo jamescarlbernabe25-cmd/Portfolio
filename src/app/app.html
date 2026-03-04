@@ -1,3 +1,19 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<!-- THE COVER (Welcome Screen) -->
+<section id="welcome-screen" [class.is-hidden]="isDismissed">
+  <div class="hero-text">
+    <h1 class="left-1st">Design</h1>
+    <h1 class="right-1st">Develop</h1>
+    <h1 class="left-2nd">Create</h1>
+    <h1 class="right-2nd">By: JC Bernabe</h1>
+  </div>
+  
+  <a (click)="dismissWelcome()" class="see-more">
+    <span>See more</span>
+    <div class="chevron"></div>
+  </a>
+</section>
+
+<!-- THE ACTUAL WEBSITE (Revealed when cover slides up) -->
+<main id="home-page">
+  <router-outlet></router-outlet>
+</main>

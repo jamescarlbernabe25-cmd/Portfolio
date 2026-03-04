@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com');
+
+
+/* Layout Container - The "Cover" Layer */
+#welcome-screen {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(248, 249, 250);
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow: hidden; 
+}
+#welcome-screen::before {
+  content: '';
+  position: absolute;
+  /* Adjust these percentages to change the "thickness" of the outer margin */
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  
+  /* The frame style */
+  border: 2px solid rgba(10, 10, 10, 0.1); /* Very subtle grey */
+  pointer-events: none; /* Crucial: allows you to click through the box */
+  z-index: -1000; /* Puts it behind your text */
+}
+
+/* Fading Edges Mask */
+.hero-text {
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Slide up state */
+#welcome-screen.is-hidden {
+  transform: translateY(-100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0s 0.8s;
+}
+
+/* Typography Base */
+.hero-text h1 {
+  font-family: 'Inter', sans-serif; 
+  font-size: clamp(3rem, 12vw, 10rem);
+  margin: 0;
+  line-height: 0.85;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: max-content;
+  
+  background: linear-gradient(90deg, #1a1a1a, #666666);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  /* Animation Base */
+  animation: billboard-scroll 10s linear infinite;
+}
+
+/* --- STAGGERED INTERVALS --- */
+
+/* Line 1: DESIGN (The Leader) */
+.left-1st { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  animation-delay: -4s; 
+  font-weight: 500;
+}
+
+/* Line 2: DEVELOP (Following Line 1) */
+.right-1st { 
+  animation-delay: -2s; 
+  animation-direction: reverse !important; 
+}
+
+/* Line 3: CREATE (Following Line 2) */
+.left-2nd { 
+  font-family: 'Times New Roman', serif !important;
+  animation-delay: 0s; 
+}
+
+/* Line 4: BY JC BERNABE (The Tail) */
+.right-2nd { 
+  animation-delay: 2s; 
+  animation-direction: reverse !important;
+  text-transform: none !important;
+  font-size: clamp(1.5rem, 8vw, 6rem) !important; 
+  font-weight: 400;
+}
+
+/* Billboard Keyframes */
+@keyframes billboard-scroll {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* See More Button & Upward Chevron */
+.see-more {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Inter', sans-serif; 
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  font-size: 12px;
+  opacity: .7;
+}
+
+.see-more span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.see-more:hover{
+  color: black !important;
+}
+.chevron {
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #1a1a1a; 
+  border-left: 2px solid #1a1a1a;
+  transform: rotate(45deg);
+  margin: 10px auto 0;
+  display: block;
+}
+
+
+
+/* Ensure the home page content sits properly below the fixed cover */
+/* #home-page {
+  width: 100%;
+  min-height: 100vh;
+  position: relative; */
+  /* z-index: 1; Content layer */
+/* } */

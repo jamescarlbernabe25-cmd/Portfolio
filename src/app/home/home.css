@@ -1,0 +1,232 @@
+/* about me section */
+.about{
+    margin-top: 70.8px;
+    font-family: 'Inter', sans-serif;
+    font-size: larger;
+     background: linear-gradient(135deg, rgb(60, 60, 60) 0%, rgb(42, 42, 42) 100%);
+    color: azure;
+    height: auto;
+    /* ADD THIS LINE TO KILL THE HORIZONTAL SCROLL */
+    overflow: hidden; 
+}
+
+.outerdiv{
+    display: flex;
+    justify-content: space-between;
+    height: 661px;
+
+}
+
+img{
+    height: 100%;
+    width: 100%;
+    bottom: 0 !important;
+    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.5));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+.imgcontain{
+    padding-right: 70px;
+    z-index: 50;
+    opacity: 0;
+    transform: translateX(100px); /* Start 100px to the right */
+    animation: slideFromRight 2s ease-out forwards;
+     overflow: visible; /* Prevents the image from being clipped when it expands */
+     
+}
+.imgcontain img:hover {
+    /* Enlarges by 5% and keeps the shadow */
+    transform: scale(1.05); 
+    filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.7));
+}
+@keyframes slideFromRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.summary {
+    padding: 70px; /* Simplified padding */
+    margin-top: 0; /* Removed large top margin to allow flex centering */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: flex-start; /* Keeps text left-aligned; use 'center' to center text */
+    flex: 1; /* Takes up equal space */
+}
+.about h1{
+   font-size: 70px;
+   font-weight: 525;
+   animation-delay: 0.5s;
+}
+.about p{
+    font-size: 25px;
+    font-weight: none;
+    letter-spacing: 1.5px;
+    line-height: 40px;
+    animation-delay: 1s; /* Starts after H2 */
+}
+
+/* 2. Text Reveal (Typing-style) for H2 and P */
+.summary h1, .summary p {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    transition: all 0.4s ease; /* Smooth transition for shadow and color */
+    cursor: default;
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.summary h1:hover, .summary p:hover {
+    /* Horizontal, Vertical, Blur, Color */
+    text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6); 
+    color: #ffffff; /* Slightly brighter white on hover */
+}
+.rectangle{
+    background: none;
+    border: 2px solid rgba(151, 151, 151, 0.1);
+    z-index: 10;
+    margin-top: 70.8px;
+    top: 20px;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Learn More Button Styles */
+.learn-more-btn {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 30px;
+    padding: 5px 10px;
+    border: .5px solid azure;
+    border-radius: 15px; /* Simplified radius */
+    color: azure;
+    text-decoration: none;
+    transition: 0.3s ease; /* Added ease for smoother hover */
+    font-size: 10px;
+    gap: 12px;
+    opacity: 0;
+    cursor: pointer !important;
+    transform: translateX(-50px);
+    
+    /* Animation remains the same */
+    animation: slideFromLeft 0.8s ease-out 1.5s forwards;
+    
+    /* Crucial: ensure it sits above the background/rectangle */
+    position: relative;
+    z-index: 25;
+}
+
+@keyframes slideFromLeft {
+    to {
+        opacity: 0.3; 
+        transform: translateX(0);
+    }
+}
+
+/* Updated Hover with !important to override the 'forwards' state */
+.learn-more-btn:hover {
+    color: azure !important;
+    border: .5px solid azure;
+    opacity: 1 !important; /* Forces visibility regardless of animation */
+    transform: scale(1.05) !important; /* Slight grow effect to show it's active */
+    background-color: rgba(240, 255, 255, 0.1); /* Subtle highlight */
+}
+
+
+/* Positioning the bottom chevron */
+.scroll-down {
+    position: absolute;
+    bottom: 20px; /* Adjust based on your viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 100;
+    color: rgb(231, 231, 231);
+    opacity: .2;
+    animation: bounce 2s infinite;
+}
+.scroll-down:hover{
+    color: azure;
+    opacity: .7;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+    40% {transform: translateX(-50%) translateY(-10px);}
+    60% {transform: translateX(-50%) translateY(-5px);}
+}
+
+
+  /* --- TABLET / SMALL LAPTOP (1140px and below) --- */
+@media screen and (max-width: 1155px) {
+    .outerdiv {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .summary {
+        padding: 40px 20px;
+        align-items: center; /* Centers text and button */
+    }
+
+    /* Important: Disable 'nowrap' so the typing H1 can wrap on smaller screens */
+    .about h1 {
+        font-size: 50px; 
+        white-space: normal; 
+        width: auto; 
+        border-right: none; /* Hide cursor if it wraps */
+        animation: fadeInUp 0.8s ease-out forwards; /* Fallback animation */
+    }
+
+    .imgcontain {
+        padding-right: 0;
+        justify-content: center;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    img {
+        width: 40%; /* Slightly larger for tablets */
+        height: auto;
+        display: block;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .rectangle {
+        display: none; /* Usually best to hide decorative borders on mobile to save space */
+    }
+}
+
+/* --- MOBILE (768px and below) --- */
+@media screen and (max-width: 768px) {
+    .about h1 {
+        font-size: 35px;
+    }
+
+    .about p {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    img {
+        width: 60%; /* Make image prominent on phones */
+        display: block;
+    }
+
+    .scroll-down {
+        bottom: 20px;
+        font-size: 25px;
+    }
+}
+

@@ -4,7 +4,7 @@ body {
     background-color: #ffffff;
     color: #000000;
     transition: background-color 0.3s ease, color 0.3s ease;
-    margin-top: 70.8px;
+    margin: 70.8px 0 0 0;
 }
 
 body.dark-mode {

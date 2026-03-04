@@ -1,4 +1,4 @@
-section{
+.nav{
     position: fixed;
     height: auto;
     width: 100%;
@@ -8,6 +8,7 @@ section{
     left: 0;
     background-color: rgb(248, 249, 250) !important; /* White navbar */
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Inter', sans-serif;
 }
 .outer{
     display: flex;
@@ -207,7 +208,6 @@ body.dark-mode .toggle-item {
     width: 100%;
     padding: 15px 10px;
     background: none;
-    font-family: 'Times New Roman', Times, serif;
     border: none;
     text-align: left;
     display: flex;
