@@ -1,0 +1,100 @@
+.portfolio-footer {
+  background-color:rgb(248, 249, 250);
+  padding: 4rem 0 1rem;
+  padding-top: 30px;
+  font-family: sans-serif;
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .footer-link {
+      color: #000; 
+      font-size: 1.5rem;
+      transition: opacity 0.2s ease;
+      
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+
+    .tooltip-text {
+      visibility: hidden;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      position: absolute;
+      bottom: 150%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    &:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .footer-bottom {
+    p {
+      color: rgb(97, 97, 97); 
+      font-size: 0.85rem;
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+}
+
+/* Floating Button Styles */
+.scroll-btn {
+  display: none;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 9999; /* Higher priority to ensure visibility */
+  
+  width: 50px;
+  height: 50px;
+  background-color: whitesmoke; 
+  color: grey;
+  border: none;
+  border-radius: 4px; 
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: grey .5px solid;
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

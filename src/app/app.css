@@ -106,7 +106,7 @@
 /* See More Button & Upward Chevron */
 .see-more {
   position: absolute;
-  bottom: 40px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -114,7 +114,7 @@
   text-align: center;
   font-family: 'Inter', sans-serif; 
   font-weight: 600;
-  color: #1a1a1a;
+  color: #555555;
   letter-spacing: 1px;
   font-size: 12px;
   opacity: .7;
@@ -127,19 +127,36 @@
 
 .see-more:hover{
   color: black !important;
+
+  .chevron{
+     border-top: 2px solid black; 
+  border-left: 2px solid black;
+  }
 }
 .chevron {
   width: 12px;
   height: 12px;
-  border-top: 2px solid #1a1a1a; 
-  border-left: 2px solid #1a1a1a;
+  border-top: 2px solid #555555; 
+  border-left: 2px solid #555555;
   transform: rotate(45deg);
   margin: 10px auto 0;
   display: block;
 }
 
+#welcome-screen p{
+  bottom: 10px;
+  right:30px;
+  position: absolute;
+  color: rgb(148, 148, 148);
+}
 
-
+#welcome-screen img{
+  width: 70px;
+  height: auto;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
 /* Ensure the home page content sits properly below the fixed cover */
 /* #home-page {
   width: 100%;

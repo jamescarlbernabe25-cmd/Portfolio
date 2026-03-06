@@ -1,170 +1,245 @@
-/* about me section */
-.about{
-    margin-top: 70.8px;
-    font-family: 'Inter', sans-serif;
-    font-size: larger;
-     background: linear-gradient(135deg, rgb(60, 60, 60) 0%, rgb(42, 42, 42) 100%);
-    color: azure;
-    height: auto;
-    /* ADD THIS LINE TO KILL THE HORIZONTAL SCROLL */
-    overflow: hidden; 
+/* --- 1. GLOBAL SCROLL REVEAL SYSTEM --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
 }
 
-.outerdiv{
+.about-me-detailed {
+    padding: 60px 10%;
+    background-color: rgb(248, 249, 250);
+    color: black !important;
+    font-family: 'Inter', sans-serif;
+}
+
+.detailed-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Space between sections */
+}
+
+/* Titles */
+h1, h2 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Bio Text */
+.bio-section p {
+    font-size: 20px;
+    letter-spacing: .25px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Tech Stack Grid */
+.tech-grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 120px); /* 3 columns like your image */
+    column-gap: 150px;
+    row-gap: 50px;
+}
+
+.tech-icon {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.tech-icon:hover { transform: scale(1.1); }
+
+/* Logo Assignments */
+.tech-icon.js { background-image: url('/assets/logos/js.png'); }
+.tech-icon.html { background-image: url('/assets/logos/html.png'); }
+.tech-icon.css { background-image: url('/assets/logos/css.png'); }
+.tech-icon.angular { background-image: url('/assets/logos/angular.png'); }
+.tech-icon.java { background-image: url('/assets/logos/java.png'); }
+.tech-icon.powerapps { background-image: url('/assets/logos/powerapps.png'); }
+
+/* Experience Section */
+.exp-item {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.exp-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.company-logo {
+    width: 120px; /* Adjusted to look like your screenshot */
+    height: auto;
+}
+
+.exp-details h3 {
+    font-size: 20px;
+    margin: 0 0 8px 0;
+}
+
+.exp-date {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.exp-role {
+    font-weight: 500;
+    color: #222;
+}
+
+/* --- REVEAL TRIGGER --- */
+.about-me-detailed.active .reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .exp-item { flex-direction: column; gap: 20px; }
+}
+
+/* Desktop-specific side reveals */
+@media screen and (min-width: 1156px) {
+    .imgcontain.reveal { transform: translateX(60px); opacity: 0; }
+    .learn-more-btn.reveal { transform: translateX(-40px); opacity: 0; }
+}
+
+/* Active State (Triggers via Angular) */
+.about.active .reveal,
+.projs.active .reveal {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+/* Staggered Entrance */
+.active h1.reveal { transition-delay: 0.1s; }
+.active p.reveal { transition-delay: 0.2s; }
+.active .imgcontain.reveal { transition-delay: 0.15s; }
+.active .learn-more-btn.reveal { transition-delay: 0.25s; }
+
+
+/* --- 2. BASE ABOUT SECTION STYLES --- */
+.about {
+    margin-top: 70px;
+    font-family: 'Inter', sans-serif;
+    font-size: larger;
+    background: rgb(248, 249, 250);
+    color: black;
+    height: auto;
+    overflow: hidden; 
+    box-sizing: border-box;
+    position: relative;
+}
+
+.outerdiv {
     display: flex;
     justify-content: space-between;
     height: 661px;
-
 }
 
-img{
-    height: 100%;
-    width: 100%;
-    bottom: 0 !important;
-    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.5));
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
-}
-.imgcontain{
-    padding-right: 70px;
-    z-index: 50;
-    opacity: 0;
-    transform: translateX(100px); /* Start 100px to the right */
-    animation: slideFromRight 2s ease-out forwards;
-     overflow: visible; /* Prevents the image from being clipped when it expands */
-     
-}
-.imgcontain img:hover {
-    /* Enlarges by 5% and keeps the shadow */
-    transform: scale(1.05); 
-    filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.7));
-}
-@keyframes slideFromRight {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 .summary {
-    padding: 70px; /* Simplified padding */
-    margin-top: 0; /* Removed large top margin to allow flex centering */
+    padding: 70px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centers vertically */
-    align-items: flex-start; /* Keeps text left-aligned; use 'center' to center text */
-    flex: 1; /* Takes up equal space */
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
 }
-.about h1{
+
+.about h1 {
    font-size: 70px;
-   font-weight: 525;
-   animation-delay: 0.5s;
+   font-weight: 525px;
+   margin-bottom: 20px;
 }
-.about p{
+
+.about p {
     font-size: 25px;
-    font-weight: none;
     letter-spacing: 1.5px;
     line-height: 40px;
-    animation-delay: 1s; /* Starts after H2 */
+    margin-bottom: 30px;
 }
 
-/* 2. Text Reveal (Typing-style) for H2 and P */
-.summary h1, .summary p {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInUp 0.8s ease-out forwards;
-    transition: all 0.4s ease; /* Smooth transition for shadow and color */
-    cursor: default;
-}
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.summary h1:hover, .summary p:hover {
-    /* Horizontal, Vertical, Blur, Color */
-    text-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6); 
-    color: #ffffff; /* Slightly brighter white on hover */
-}
-.rectangle{
-    background: none;
-    border: 2px solid rgba(151, 151, 151, 0.1);
-    z-index: 10;
-    margin-top: 70.8px;
-    top: 20px;
-    bottom: 20px;
-    right: 20px;
-    left: 20px;
-    position: absolute;
-    pointer-events: none;
+.imgcontain {
+    padding: 50px 70px 50px 0;
+    z-index: 50;
+    overflow: visible;
 }
 
-/* Learn More Button Styles */
+.imgcontain img {
+    height: 100%;
+    width: 100%;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.imgcontain img:hover {
+    transform: scale(1.05); 
+    filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.2));
+}
+
 .learn-more-btn {
     display: inline-flex;
     align-items: center;
-    margin-top: 30px;
-    padding: 5px 10px;
-    border: .5px solid azure;
-    border-radius: 15px; /* Simplified radius */
-    color: azure;
+    padding: 8px 15px;
+    border: .5px solid rgb(62, 62, 62) ;
+    border-radius: 15px;
+    color: rgb(62, 62, 62) ;
     text-decoration: none;
-    transition: 0.3s ease; /* Added ease for smoother hover */
-    font-size: 10px;
+    font-size: 11px;
     gap: 12px;
-    opacity: 0;
-    cursor: pointer !important;
-    transform: translateX(-50px);
-    
-    /* Animation remains the same */
-    animation: slideFromLeft 0.8s ease-out 1.5s forwards;
-    
-    /* Crucial: ensure it sits above the background/rectangle */
+    cursor: pointer;
     position: relative;
     z-index: 25;
 }
 
-@keyframes slideFromLeft {
-    to {
-        opacity: 0.3; 
-        transform: translateX(0);
-    }
-}
-
-/* Updated Hover with !important to override the 'forwards' state */
-.learn-more-btn:hover {
-    color: azure !important;
-    border: .5px solid azure;
-    opacity: 1 !important; /* Forces visibility regardless of animation */
-    transform: scale(1.05) !important; /* Slight grow effect to show it's active */
-    background-color: rgba(240, 255, 255, 0.1); /* Subtle highlight */
-}
 
 
-/* Positioning the bottom chevron */
-.scroll-down {
-    position: absolute;
-    bottom: 20px; /* Adjust based on your viewport */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 35px;
-    cursor: pointer;
-    z-index: 100;
-    color: rgb(231, 231, 231);
-    opacity: .2;
-    animation: bounce 2s infinite;
-}
-.scroll-down:hover{
-    color: azure;
-    opacity: .7;
-}
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
-    40% {transform: translateX(-50%) translateY(-10px);}
-    60% {transform: translateX(-50%) translateY(-5px);}
+/* --- 3. PROJECTS SECTION STYLES --- */
+.projs {
+    padding: 10px 50px 150px 50px;
+    background: rgb(248, 249, 250);
+    text-align: center;
+    min-height: 600px;
+    font-family: 'Inter', sans-serif;
 }
 
+.projs h1 {
+    font-size: 60px;
+    margin-bottom: 40px;
+    font-weight: 525px;
+    letter-spacing: 1px;
+}
+.projs p{
+    font-size: 20px;
+    letter-spacing: .5px;
+}
+.video-container {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+}
 
-  /* --- TABLET / SMALL LAPTOP (1140px and below) --- */
+.preview-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 4. TABLET / SMALL LAPTOP (1155px and below) --- */
 @media screen and (max-width: 1155px) {
     .outerdiv {
         flex-direction: column;
@@ -175,40 +250,38 @@ img{
 
     .summary {
         padding: 40px 20px;
-        align-items: center; /* Centers text and button */
+        align-items: center; 
     }
 
-    /* Important: Disable 'nowrap' so the typing H1 can wrap on smaller screens */
     .about h1 {
         font-size: 50px; 
         white-space: normal; 
         width: auto; 
-        border-right: none; /* Hide cursor if it wraps */
-        animation: fadeInUp 0.8s ease-out forwards; /* Fallback animation */
     }
 
     .imgcontain {
         padding-right: 0;
+        padding-top: 20px;
         justify-content: center;
         width: 100%;
         display: flex;
         align-items: flex-end;
     }
 
-    img {
-        width: 40%; /* Slightly larger for tablets */
+    .imgcontain img {
+        width: 40%; 
         height: auto;
-        display: block;
-        display: block;
         margin: 0 auto;
     }
 
-    .rectangle {
-        display: none; /* Usually best to hide decorative borders on mobile to save space */
+    .about {
+        position: relative;
+        height: auto; 
+        min-height: 100vh;
     }
 }
 
-/* --- MOBILE (768px and below) --- */
+/* --- 5. MOBILE (768px and below) --- */
 @media screen and (max-width: 768px) {
     .about h1 {
         font-size: 35px;
@@ -219,9 +292,8 @@ img{
         line-height: 28px;
     }
 
-    img {
-        width: 60%; /* Make image prominent on phones */
-        display: block;
+    .imgcontain img {
+        width: 60%; 
     }
 
     .scroll-down {
@@ -230,3 +302,22 @@ img{
     }
 }
 
+/* --- 6. UTILITIES --- */
+.scroll-down {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 100;
+    color: #333;
+    opacity: .2;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+    40% {transform: translateX(-50%) translateY(-10px);}
+}

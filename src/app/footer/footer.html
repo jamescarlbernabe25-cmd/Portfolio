@@ -1,1 +1,45 @@
-<p>footer works!</p>
+<footer class="portfolio-footer" id="my-footer">
+  <div class="footer-container">
+    
+    <!-- Icon Links -->
+    <div class="footer-socials">
+      <!-- CV with Hint -->
+      <div class="tooltip-container">
+        <a href="assets/Bernabe, James Carl CV.pdf" target="_blank" rel="noopener" class="footer-link">
+          <fa-icon [icon]="faFilePdf"></fa-icon>
+        </a>
+        <span class="tooltip-text">View & Download CV</span>
+      </div>
+
+      <!-- Gmail -->
+      <a href="mailto:jamescarl.bernabe25@gmail.com" class="footer-link">
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/james-carl-bernabe-40ba95243" target="_blank" class="footer-link">
+        <fa-icon [icon]="faLinkedin"></fa-icon>
+      </a>
+
+        <!-- GitHub -->
+<a href="https://github.com/jamescarlbernabe25-cmd" target="_blank" rel="noopener" class="footer-link">
+  <fa-icon [icon]="faGithub"></fa-icon>
+</a>
+    </div>
+
+    <!-- Copyright at the bottom -->
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear }} Your Name. All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- Scroll to Top (Right Side) -->
+  <!-- <button 
+    class="scroll-btn" 
+    [class.is-visible]="showScrollButton" 
+    (click)="scrollToTop()"
+    aria-label="Scroll to top">
+    <fa-icon [icon]="faChevronUp"></fa-icon>
+  </button> -->
+</footer>
+

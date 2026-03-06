@@ -1,32 +1,101 @@
 <app-navbar></app-navbar>
-<section class="about">
-    <div class="outerdiv">
-        <div class="circle"></div>
-        <div class="rectangle"></div>
-        <div class="summary">
-            <h1>Hi, I'm James Carl Bernabe.</h1>
-        <p>
-            "I have been working as a developer for more than two years. <br> 
-            I have experience in various technologies, with a specialty in 
-            design—specifically in Angular."
-        </p>
-         <!-- Learn More Button -->
-            <a routerLink="/about" class="learn-more-btn">
-                Learn more about Me 
-                <fa-icon [icon]="faArrowExternal" class="ms-2"></fa-icon>
-            </a>
-        </div>
-        <div class="imgcontain">
-            <img src="assets/img/profImg.png" alt="">
-        </div>
+<!-- intro SECTION -->
+<section #aboutSection class="about" [class.active]="isAboutVisible">
+  <div class="outerdiv">
+    <div class="summary">
+      <h1 class="reveal">Hi, I'm James Carl Bernabe.</h1>
+      <p class="reveal">
+        "I have been working as a developer for more than two years. <br> 
+        I have experience in various technologies, with a specialty in 
+        design—specifically in Angular."
+      </p>
+      <a routerLink="/about" class="learn-more-btn reveal">
+        Know more about Me 
+        <fa-icon [icon]="faArrowExternal" class="ms-2"></fa-icon>
+      </a>
     </div>
-         <!-- Scroll Down Icon -->
-    <div class="scroll-down" (click)="scrollToProjects(projs)">
-        <fa-icon [icon]="faChevronDown"></fa-icon>
+    
+    <div class="imgcontain reveal">
+      <img src="assets/img/portpic.png" alt="Profile">
     </div>
-    </section>
-    <section #projs class="projs">
-        <h1>Projects</h1>
+  </div>
 
-    </section>
+  <!-- <div class="scroll-down" (click)="scrollToProjects(projs)">
+    <fa-icon [icon]="faChevronDown"></fa-icon>
+  </div> -->
+</section>
+<!-- about me SECTION -->
+<section #aboutDetailed class="about-me-detailed" [class.active]="isAboutDetailedVisible">
+    <div class="detailed-container">
+        
+        <!-- 01. About Me Bio -->
+        <div class="bio-section reveal">
+            <h1>About Me</h1>
+            <p>
+                My name is <strong>James Carl Bernabe</strong>. I am a dedicated Front-end Developer based in the Philippines, driven by a passion for building seamless web experiences. I hold a Bachelor’s degree in Computer Engineering, which provided the technical foundation for my career.
+            </p>
+            <p>
+                For over two years, I have served as an Application System Engineer in my first professional role within the IT outsourcing industry. My role is multifaceted, covering programming, infrastructure, and administrative tasks.
+            </p>
+            <p>
+                My specialized skills in Front-end development were honed through intensive bootcamp training, where I mastered Angular and Power Platforms. I am a diligent worker with a strong sense of perseverance, bringing high efficiency and creativity to every task.
+            </p>
+        </div>
+
+        <!-- 02. Tech Stack Icons -->
+        <div class="tech-section reveal">
+            <h2>Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-icon js" title="JavaScript"></div>
+                <div class="tech-icon html" title="HTML5"></div>
+                <div class="tech-icon css" title="CSS3"></div>
+                <div class="tech-icon angular" title="Angular"></div>
+                <div class="tech-icon java" title="Java"></div>
+                <div class="tech-icon powerapps" title="PowerApps"></div>
+            </div>
+        </div>
+
+        <!-- 03. Experience Details -->
+        <div class="experience-section reveal">
+            <h2>Experience</h2>
+            <div class="exp-item">
+                <div class="exp-logos">
+                    <img src="/assets/logos/fujitsu.png" alt="Fujitsu" class="company-logo">
+                    <img src="/assets/logos/weserv.png" alt="Weserv" class="company-logo">
+                </div>
+                <div class="exp-details">
+                    <h3>Fujitsu / Weserv Systems International Inc.</h3>
+                    <p class="exp-date">Nov 2023 - Present</p>
+                    <p class="exp-role">Application System Engineer</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROJECTS SECTION -->
+<section #projs class="projs" [class.active]="isProjsVisible">
+  <h1 class="reveal">Projects</h1>
+  
+  <div class="project-card reveal">
+    <div class="video-container">
+     <video [muted]="'muted'" autoplay loop playsinline class="preview-video">
+    <source src="assets/videos/sampleproj.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+    </div>
+    
+    <div class="project-details">
+      <p>Fujitsu Bootcamp Final Project</p>
+      <a routerLink="/Projects" class="learn-more-btn">
+        More about My Projects 
+        <fa-icon [icon]="faArrowExternal" class="ms-2"></fa-icon>
+      </a> 
+    </div>
+  </div>
+</section>
+
     <app-footer></app-footer>

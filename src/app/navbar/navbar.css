@@ -339,7 +339,7 @@ body.dark-mode .settings-trigger.active:hover{
 }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 575px) {
 .menu-btn {
     display: inline-flex; /* Use inline-flex to prevent horizontal stretching */
     align-self: center;   /* THE FIX: Stops the button from stretching to the navbar height */

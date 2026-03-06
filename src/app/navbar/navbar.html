@@ -24,7 +24,12 @@
             <a routerLink="/projs" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Projects</a>
         </li>
         <li>
-            <a routerLink="/contacts" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Contacts & Links</a>
+            <a 
+  routerLink="./" 
+  fragment="my-footer" 
+  (click)="isMenuOpen = false" >
+  Contacts & Links
+</a>
         </li>
         <li class="mobile-only toggle-item">
     <button class="label-group" (click)="toggleDarkMode()">
