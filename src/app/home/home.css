@@ -7,7 +7,7 @@
 }
 
 .about-me-detailed {
-    padding: 60px 10%;
+    padding: 60px 5% 40px;
     background-color: rgb(248, 249, 250);
     color: black !important;
     font-family: 'Inter', sans-serif;
@@ -25,7 +25,7 @@
 h1, h2 {
     font-size: 35px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #000;
 }
 
@@ -35,9 +35,11 @@ h1, h2 {
     letter-spacing: .25px;
     line-height: 1.7;
     margin-bottom: 15px;
-    color: #444;
+    color: black;
 }
-
+.bio-section h1{
+    margin-top: 0;
+}
 /* Tech Stack Grid */
 .tech-grid {
     display: grid;
@@ -57,7 +59,7 @@ h1, h2 {
     transition: transform 0.3s ease;
 }
 
-.tech-icon:hover { transform: scale(1.1); }
+.tech-icon:hover { transform: scale(1.1); filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.2));}
 
 /* Logo Assignments */
 .tech-icon.js { background-image: url('/assets/logos/js.png'); }
@@ -108,10 +110,10 @@ h1, h2 {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .tech-grid { grid-template-columns: repeat(2, 1fr); }
     .exp-item { flex-direction: column; gap: 20px; }
-}
+} */
 
 /* Desktop-specific side reveals */
 @media screen and (min-width: 1156px) {
@@ -279,12 +281,82 @@ h1, h2 {
         height: auto; 
         min-height: 100vh;
     }
+    
 }
+/* --- TABLET RANGE (500px to 950px) --- */
+@media screen and (min-width: 700px) and (max-width: 950px) {
+    .tech-grid {
+        /* Keep 3 columns */
+        grid-template-columns: repeat(3, 120px) !important; 
+        
+        /* Reduce gaps so they fit on smaller tablets/large phones */
+        column-gap: 80px !important; 
+        row-gap: 30px !important;
+        
+        /* Ensure centering */
+        justify-content: center !important;
+        margin: 0 auto !important;
+        width: fit-content !important;
+    }
 
+    .tech-icon {
+        width: 150px !important; /* Slightly smaller to save space */
+        height: 150px !important;
+        background-size: 150px !important;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr !important; /* Stack Bio and Stats */
+        text-align: center;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 699px) {
+    .tech-grid {
+        /* Keep 3 columns */
+        grid-template-columns: repeat(3, 120px) !important; 
+        
+        /* Reduce gaps so they fit on smaller tablets/large phones */
+        column-gap: 60px !important; 
+        row-gap: 30px !important;
+        
+        /* Ensure centering */
+        justify-content: center !important;
+        margin: 0 auto !important;
+        width: fit-content !important;
+    }
+
+    .tech-icon {
+        width: 125px !important; /* Slightly smaller to save space */
+        height: 125px !important;
+        background-size: 125px !important;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr !important; /* Stack Bio and Stats */
+        text-align: center;
+    }
+}
 /* --- 5. MOBILE (768px and below) --- */
 @media screen and (max-width: 768px) {
+
+     /* 1. Force all reveal elements to be visible instantly */
+    .reveal {
+        opacity: 1 !important;
+        transform: translate(0, 0) !important;
+        transition: none !important; /* Disables the sliding movement */
+        visibility: visible !important;
+    }
+
+    /* 2. Reset any delays we added for desktop staggering */
+    .about.active .reveal,
+    .projs.active .reveal,
+    .about-me-detailed.active .reveal {
+        transition-delay: 0s !important;
+    }
+
     .about h1 {
         font-size: 35px;
+        margin-top: 10px;
     }
 
     .about p {
@@ -295,13 +367,73 @@ h1, h2 {
     .imgcontain img {
         width: 60%; 
     }
+    .imgcontain{
+        padding-top: 0;
+        padding-bottom: 15px;
+    }
 
     .scroll-down {
         bottom: 20px;
         font-size: 25px;
     }
-}
+      .about-me-detailed {
+        padding: 60px 20px;
+    }
 
+    .bio-section h1{
+        font-size: 25px !important;
+        margin-bottom: 20px;
+    }
+    .bio-section p{
+        font-size: 17px;
+    }
+
+    .tech-section h2{
+        margin-top: 0 !important;
+        font-size: 25px;
+    }
+    .experience-section h2{
+        margin-top: 15px;
+        font-size: 25px;
+    }
+    .exp-item h3{
+        font-size: 20px;
+    }
+  
+
+
+
+
+    .about-me-detailed h1 {
+        font-size: 32px;
+    }
+    .projs h1{
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    .projs{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .projs p{
+        font-size: 17px;
+    }
+}
+/* --- MOBILE RANGE (Below 500px) --- */
+@media screen and (max-width: 600px) {
+    .tech-grid {
+        grid-template-columns: repeat(2, 120px) !important; /* Switch to 2 columns only here */
+        column-gap: 25px !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+    }
+
+    .tech-icon {
+        width: 110px !important; /* Slightly smaller for mobile */
+        height: 110px !important;
+    }
+}
 /* --- 6. UTILITIES --- */
 .scroll-down {
     display: none;
