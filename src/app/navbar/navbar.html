@@ -12,25 +12,21 @@
 </a>
 
     <ul [class.show]="isMenuOpen">
-        <li>
+        <!-- <li>
             <a routerLink="/home" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <fa-icon [icon]="faHome"></fa-icon>
             </a>
-        </li>
-        <li>
-            <a routerLink="/about" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">About Me</a>
-        </li>
-        <li>
-            <a routerLink="/projs" (click)="isMenuOpen = false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Works</a>
-        </li>
-        <li>
-            <a 
-  routerLink="./" 
-  fragment="my-footer" 
-  (click)="isMenuOpen = false" >
-  Contacts & Links
-</a>
-        </li>
+        </li> -->
+       <li>
+  <a routerLink="./" fragment="about-detailed" (click)="isMenuOpen = false">About Me</a>
+</li>
+<li>
+  <a routerLink="./" fragment="projs-section" (click)="isMenuOpen = false">Works</a>
+</li>
+<li>
+  <a routerLink="./" fragment="my-footer" (click)="isMenuOpen = false">Contacts & Links</a>
+</li>
+
         <li class="mobile-only toggle-item">
     <button class="label-group" (click)="toggleDarkMode()">
         <fa-icon [icon]="faMoon"></fa-icon> 
