@@ -77,25 +77,36 @@
 
 <!-- PROJECTS SECTION -->
 <section #projs class="projs" [class.active]="isProjsVisible">
-  <h1 class="reveal">Projects</h1>
-  
-  <div class="project-card reveal">
-    <div class="video-container">
-     <video [muted]="'muted'" autoplay loop playsinline class="preview-video">
-    <source src="assets/videos/sampleproj.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+  <h1 class="reveal">Works</h1>
 
-    </div>
-    
-    <div class="project-details">
-      <p>Fujitsu Bootcamp Final Project</p>
-      <a routerLink="/Projects" class="learn-more-btn">
-        More about My Projects 
-        <fa-icon [icon]="faArrowExternal" class="ms-2"></fa-icon>
-      </a> 
+  <div class="projects-grid">
+    <div *ngFor="let project of projects" class="project-card reveal">
+      <div class="video-container">
+        <!-- Media -->
+        <video *ngIf="project.type === 'video'" [muted]="true" autoplay loop playsinline class="preview-media">
+          <source [src]="project.src" type="video/mp4">
+        </video>
+        <img *ngIf="project.type === 'image'" [src]="project.src" class="preview-media">
+
+        <!-- Hover Overlay -->
+        <div class="media-overlay">
+          <div class="overlay-content">
+            <h3>{{ project.title }}</h3>
+            <div class="tech-list">
+              <span *ngFor="let t of project.tech">{{ t }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-details">
+        <p>{{ project.title }}</p>
+      </div>
     </div>
   </div>
 </section>
+
+
+
 
     <app-footer></app-footer>

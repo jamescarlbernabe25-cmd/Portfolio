@@ -26,6 +26,34 @@ export class Home implements AfterViewInit {
   isProjsVisible = false;
   isAboutDetailedVisible = false; // Add this
 
+ projects = [
+  {
+    type: 'video',
+    src: 'assets/videos/sampleproj.mp4',
+    title: 'Fujitsu Bootcamp Final Project',
+    tech: ['MEAN Stack', 'JS']
+  },
+  {
+    type: 'image',
+    src: 'assets/img/zodiac.png',
+    title: 'Horoscope Site',
+    tech: ['Angular']
+  },
+  {
+    type: 'image',
+    src: 'assets/img/bible.png',
+    title: 'Bible Site',
+    tech: ['Angular', 'API']
+  },
+  {
+    type: 'video',
+    src: 'assets/videos/weservclone.mp4',
+    title: 'Weserv Home page Clone',
+    tech: ['Angular']
+  }
+];
+
+
   scrollToProjects(element: HTMLElement) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
