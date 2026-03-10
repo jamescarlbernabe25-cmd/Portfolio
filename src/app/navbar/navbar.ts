@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Standard Angular stuff
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // <--- ADD THIS
 import { faHome, faGear, faMoon, faColumns, faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navbar.css',
   encapsulation: ViewEncapsulation.None
 })
-export class Navbar {
+export class Navbar implements OnInit {
+  
   faHome = faHome;
   faGear = faGear;
   faMoon = faMoon;
@@ -25,6 +26,16 @@ export class Navbar {
   isSidebarActive = false;
   
   constructor(private eRef: ElementRef) {}
+
+  ngOnInit() {
+    // 1. Check if 'darkMode' was previously saved in the browser
+    const savedMode = localStorage.getItem('darkMode');
+    
+    if (savedMode === 'enabled') {
+      this.isDarkMode = true;
+      document.body.classList.add('dark-mode');
+    }
+  }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -53,13 +64,22 @@ onDocumentClick(event: MouseEvent) {
 
 
 
- toggleDarkMode() {
-    // This adds/removes a 'dark-mode' class to the entire page
-    document.body.classList.toggle('dark-mode');
-    console.log('Dark mode toggled');
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('dark-mode', this.isDarkMode);
+toggleDarkMode() {
+  // 1. Flip the boolean value
+  this.isDarkMode = !this.isDarkMode;
+
+  // 2. Add or Remove the class based on that boolean
+  if (this.isDarkMode) {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('darkMode', 'enabled'); // Save it to the browser
+  } else {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('darkMode', 'disabled'); // Save the "off" state
   }
+
+  console.log('Dark mode is now:', this.isDarkMode);
+}
+
 
   toggleSidebar() {
     // We will just log this for now to stop the error. 

@@ -4,12 +4,11 @@ import { Footer } from '../footer/footer';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Navbar, Footer, CommonModule, FontAwesomeModule, RouterLink],
+  imports: [Navbar, Footer, CommonModule, FontAwesomeModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

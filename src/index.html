@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="favicon.png?v=1">
+
+  <script>
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+  }
+</script>
 </head>
 <body>
   <app-welcome></app-welcome>

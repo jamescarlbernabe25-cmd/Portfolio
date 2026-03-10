@@ -3,6 +3,7 @@
   padding: 4rem 0 1rem;
   padding-top: 30px;
   font-family: sans-serif;
+  transition: background-color 0.3s ease;
 
   .footer-container {
     display: flex;
@@ -27,7 +28,15 @@
     }
   }
 
-  
+  :host-context(body.dark-mode) .portfolio-footer{
+    background-color: rgb(34, 34, 34);
+    transition: background-color 0.3s ease;
+
+    .footer-link{
+      color: white;
+      transition: color .3s ease;
+    }
+  }
   .tooltip-container {
     position: relative;
     display: inline-block;

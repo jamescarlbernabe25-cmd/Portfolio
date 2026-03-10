@@ -9,7 +9,7 @@
 .about-me-detailed {
     padding: 60px 5% 40px;
     background-color: rgb(248, 249, 250);
-    color: black !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
     font-family: 'Inter', sans-serif;
 }
 
@@ -26,7 +26,6 @@ h1, h2 {
     font-size: 35px;
     font-weight: 700;
     margin-bottom: 30px;
-    color: #000;
 }
 
 /* Bio Text */
@@ -35,7 +34,6 @@ h1, h2 {
     letter-spacing: .25px;
     line-height: 1.7;
     margin-bottom: 15px;
-    color: black;
 }
 .bio-section h1{
     margin-top: 0;
@@ -75,7 +73,15 @@ h1, h2 {
     gap: 40px;
     align-items: flex-start;
 }
-
+.weserv-container{
+ transition: background-color 0.3s ease;
+}
+:host-context(body.dark-mode) .weserv-container{
+ height: max-content;
+ width: max-content;
+ background-color: white;
+ transition: background-color 0.3s ease;
+}
 .exp-logos {
     display: flex;
     flex-direction: column;
@@ -93,16 +99,23 @@ h1, h2 {
 }
 
 .exp-date {
-    color: #666;
+    color: #656565;
     font-style: italic;
     margin-bottom: 10px;
 }
-
+:host-context(body.dark-mode) .exp-date {
+    color: lightgray;
+    transition: color .3s ease;
+}
 .exp-role {
     font-weight: 500;
     color: #222;
+    transition: color .3s ease;
 }
-
+:host-context(body.dark-mode) .exp-role{
+    color: whitesmoke;
+    transition: color .3s ease;
+}
 /* --- REVEAL TRIGGER --- */
 .about-me-detailed.active .reveal {
     opacity: 1 !important;
@@ -141,13 +154,18 @@ h1, h2 {
     font-family: 'Inter', sans-serif;
     font-size: larger;
     background: rgb(248, 249, 250);
-    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
     height: auto;
     overflow: hidden; 
     box-sizing: border-box;
     position: relative;
 }
-
+.summary h1, .summary p{
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+:host-context(body.dark-mode) .summary h1, :host-context(body.dark-mode) .summary p{
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 .outerdiv {
     display: flex;
     justify-content: space-between;
@@ -240,9 +258,16 @@ h1, h2 {
 .projs {
     font-family: 'Inter', sans-serif;
     padding: 50px;
-    padding-bottom: 175px;
+    padding-bottom: 175px; 
+    color: black;
+    background-color: rgb(248, 249, 250);
+    transition: background-color 0.3s ease, color 0.3s ease !important;
 }
-
+:host-context(body.dark-mode) .projs{
+    background-color: rgb(34, 34, 34); /* You must define the dark color here */
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease !important; 
+}
 .projs h1 {
     font-size: 50px !important;
     margin-bottom: 40px;
