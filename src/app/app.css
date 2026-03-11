@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com');
-
 
 /* Layout Container - The "Cover" Layer */
 #welcome-screen {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -16,6 +14,7 @@
   transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
   overflow: hidden; 
 }
+
 #welcome-screen::before {
   content: '';
   position: absolute;
@@ -40,6 +39,10 @@
   gap: 10px;
 }
 
+:host-context(body.dark-mode) .hero-text {
+  mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+}
 /* Slide up state */
 #welcome-screen.is-hidden {
   transform: translateY(-100%);
@@ -157,6 +160,53 @@
   top: 20px;
   left: 20px;
 }
+
+:host-context(body.dark-mode) #welcome-screen::before {
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Light border */
+}
+
+.welcome-logo {
+  width: 70px;
+  height: auto;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  transition: filter 0.3s ease; /* Smooth transition */
+}
+
+/* When body has dark-mode, invert the black logo to white */
+:host-context(body.dark-mode) .welcome-logo {
+  filter: invert(1) brightness(2) !important;
+}
+
+/* 3. Text colors for Dark Mode */
+:host-context(body.dark-mode) .hero-text h1 {
+  background: linear-gradient(90deg, #ffffff, #888888);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:host-context(body.dark-mode) .see-more,
+:host-context(body.dark-mode) #welcome-screen p {
+  color: #aaaaaa;
+}
+
+:host-context(body.dark-mode) .see-more:hover{
+  color: whitesmoke !important;
+
+  .chevron{
+     border-top: 2px solid whitesmoke !important; 
+  border-left: 2px solid whitesmoke !important;
+  }
+}
+/* Add this to your main CSS file */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  /* Optional: prevents "jump" when scrollbar disappears on desktop */
+  padding-right: 0px; 
+}
+
 /* Ensure the home page content sits properly below the fixed cover */
 /* #home-page {
   width: 100%;

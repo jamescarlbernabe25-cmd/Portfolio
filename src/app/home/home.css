@@ -60,12 +60,12 @@ h1, h2 {
 .tech-icon:hover { transform: scale(1.1); filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.2));}
 
 /* Logo Assignments */
-.tech-icon.js { background-image: url('/assets/logos/js.png'); }
-.tech-icon.html { background-image: url('/assets/logos/html.png'); }
-.tech-icon.css { background-image: url('/assets/logos/css.png'); }
-.tech-icon.angular { background-image: url('/assets/logos/angular.png'); }
-.tech-icon.java { background-image: url('/assets/logos/java.png'); }
-.tech-icon.powerapps { background-image: url('/assets/logos/powerapps.png'); }
+.tech-icon.js { background-image: url('../../assets/logos/js.png'); }
+.tech-icon.html { background-image: url('../../assets/logos/html.png'); }
+.tech-icon.css { background-image: url('../../assets/logos/css.png'); }
+.tech-icon.angular { background-image: url('../../assets/logos/angular.png'); }
+.tech-icon.java { background-image: url('../../assets/logos/java.png'); }
+.tech-icon.powerapps { background-image: url('../../assets/logos/powerapps.png'); }
 
 /* Experience Section */
 .exp-item {
@@ -340,7 +340,7 @@ h1, h2 {
     }
 
     .summary {
-        padding: 40px 20px;
+        padding: 40px 20px 20px 20px;
         align-items: center; 
     }
 
@@ -368,7 +368,7 @@ h1, h2 {
     .about {
         position: relative;
         height: auto; 
-        min-height: 100vh;
+        min-height: fit-content;
     }
     
 }
@@ -466,7 +466,7 @@ h1, h2 {
         font-size: 25px;
     }
       .about-me-detailed {
-        padding: 60px 20px;
+        padding: 50px 20px 50px;
     }
 
     .bio-section h1{
@@ -489,8 +489,13 @@ h1, h2 {
         font-size: 20px;
     }
   
-
-
+    .summary{
+        padding-bottom: 0;
+        padding-top: 20px;
+    }
+    .about{
+        padding-bottom: 15px;
+    }
 
 
     .about-me-detailed h1 {

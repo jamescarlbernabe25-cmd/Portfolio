@@ -1,6 +1,8 @@
 <!-- THE COVER (Welcome Screen) -->
 <section id="welcome-screen" [class.is-hidden]="isDismissed">
-  <img src="assets/Logo/jc black.png" alt="">
+  <!-- Use the signal from the service -->
+<img [src]="themeService.isDarkMode() ? 'assets/Logo/JC white (2).png' : 'assets/Logo/jc black.png'" alt="">
+
   <div class="hero-text">
     <h1 class="left-1st">Design</h1>
     <h1 class="right-1st">Develop</h1>

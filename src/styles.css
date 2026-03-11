@@ -8,11 +8,20 @@ body {
 }
 
 body.dark-mode {
-    background-color: rgb(29, 29, 29); /* Pure black body */
+    background-color: rgb(34, 34, 34); /* Pure black body */
     color: white !important;
     transition: background-color 0.3s ease, color 0.3s ease !important;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Ensure this is in your GLOBAL styles.css file */
+html.no-scroll, 
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100dvh !important; /* Use dynamic height to match the gadget screen */
+  position: fixed; /* Force-stops all momentum scrolling on mobile */
+  width: 100%;
 }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'; // Standard Angular stuff
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // <--- ADD THIS
 import { faHome, faGear, faMoon, faColumns, faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ThemeService } from '../theme';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,7 @@ export class Navbar implements OnInit {
   isDarkMode = false;
   isSidebarActive = false;
   
-  constructor(private eRef: ElementRef) {}
+  constructor(private eRef: ElementRef, public themeService: ThemeService) {}
 
   ngOnInit() {
     // 1. Check if 'darkMode' was previously saved in the browser
@@ -65,6 +66,7 @@ onDocumentClick(event: MouseEvent) {
 
 
 toggleDarkMode() {
+  this.themeService.toggleDarkMode();
   // 1. Flip the boolean value
   this.isDarkMode = !this.isDarkMode;
 
