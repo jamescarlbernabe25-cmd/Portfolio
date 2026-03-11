@@ -338,7 +338,11 @@ body.dark-mode .settings-trigger.active:hover{
     display: flex !important;
 }
 }
-
+@media (hover:none){
+    .dropdown-menu.show {
+    display: flex !important;
+}
+}
 @media screen and (max-width: 575px) {
 .menu-btn {
     display: inline-flex; /* Use inline-flex to prevent horizontal stretching */
